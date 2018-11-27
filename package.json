@@ -1,22 +1,18 @@
 {
   "name": "flipkart_product_secrch",
   "version": "1.0.0",
-  "description": "A Simple Application For Flipkart Affiliate API",
-  "main": "main.js",
+  "description": "A Simple server for Excel to Html",
+  "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "node index.js"
   },
-  "repository": "https://github.com/prasanta1987/flipkart_affiliate",
+  "repository": "https://github.com/prasanta1987/excel_web_server",
   "keywords": [
-    "Flipkart",
-    "Flipkart affiliate",
-    "Flipkart API"
+    "excel to html"
   ],
   "author": "Prasanta Karmakar",
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^3.0.9"
-  },
+  "devDependencies": {},
   "dependencies": {
     "exceljs": "^1.6.3",
     "express": "^4.16.4"
