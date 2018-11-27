@@ -12,12 +12,13 @@ function excelToHtml() {
     workbook.xlsx.readFile('./1.xlsx').then(() => {
         let colCount = workbook.getWorksheet().actualColumnCount
         let rowCount = workbook.getWorksheet().actualRowCount
+
         let html = `<!DOCTYPE html>
                     <html lang="en">
                     <head>
                         <meta charset="UTF-8">
                         <meta http-equiv="Cache-control" content="no-cache">
-                        <meta http-equiv="refresh" content="11">
+                        <meta http-equiv="refresh" content="7">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
                         <title>Document</title>
@@ -36,7 +37,7 @@ function excelToHtml() {
         for (row = 1; row <= rowCount; row++) {
             body += '<tr>'
             for (col = 1; col <= colCount; col++) {
-                val = workbook.getWorksheet().getCell(row, col).value
+                val = workbook.getWorksheet('Sheet1').getCell(row, col).value
                 val = (val != null) ? val : ''
                 body += '<td>' + val + '</td>'
             }
