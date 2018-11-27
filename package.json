@@ -1,0 +1,24 @@
+{
+  "name": "flipkart_product_secrch",
+  "version": "1.0.0",
+  "description": "A Simple Application For Flipkart Affiliate API",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/prasanta1987/flipkart_affiliate",
+  "keywords": [
+    "Flipkart",
+    "Flipkart affiliate",
+    "Flipkart API"
+  ],
+  "author": "Prasanta Karmakar",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.9"
+  },
+  "dependencies": {
+    "exceljs": "^1.6.3",
+    "express": "^4.16.4"
+  }
+}
