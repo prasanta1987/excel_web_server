@@ -35,11 +35,14 @@ function excelToHtml() {
 
         let body = '<table class="table table-dark">'
         for (row = 1; row <= rowCount; row++) {
+            body += '\n'
             body += '<tr>'
+            body += '\n'
             for (col = 1; col <= colCount; col++) {
                 val = workbook.getWorksheet('Sheet1').getCell(row, col).value
                 val = (val != null) ? val : ''
                 body += '<td>' + val + '</td>'
+                body += '\n'
             }
             body += '</tr>'
         }
