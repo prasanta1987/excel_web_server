@@ -10,9 +10,12 @@ var workbook = new Excel.Workbook();
 
 function excelToHtml() {
     workbook.xlsx.readFile('./1.xlsx').then(() => {
-        let colCount = workbook.getWorksheet().actualColumnCount
-        let rowCount = workbook.getWorksheet().actualRowCount
+        let colCount = workbook.getWorksheet().columnCount
+        let rowCount = workbook.getWorksheet().rowCount
 
+        // cellBgColor = workbook.getWorksheet().getCell(1, 1).fill
+        // testVal = workbook.getWorksheet().getCell(1, 1).style
+        // console.log(testVal)
         let html = `<!DOCTYPE html>
                     <html lang="en">
                     <head>
@@ -39,9 +42,20 @@ function excelToHtml() {
             body += '<tr>'
             body += '\n'
             for (col = 1; col <= colCount; col++) {
-                val = workbook.getWorksheet('Sheet1').getCell(row, col).value
-                val = (val != null) ? val : ''
-                body += '<td>' + val + '</td>'
+                isFormula = workbook.getWorksheet().getCell(row, col).formulaType
+                if (isFormula) {
+                    val = workbook.getWorksheet('Sheet1').getCell(row, col).result
+                } else {
+                    val = workbook.getWorksheet('Sheet1').getCell(row, col).value
+                }
+                val = (val != null) ? val : '';
+
+                fontColor = workbook.getWorksheet().getCell(row, col).font.color
+                fontColor = (!fontColor) ? '00000000' : fontColor.argb;
+                bgColor = testVal = workbook.getWorksheet().getCell(row, col).fill
+                bgColor = (!bgColor) ? 'FFFFFFFF' : bgColor.fgColor.argb
+                body += `<td style="color:${getColor(fontColor)};background-color:${getColor(bgColor)}">${val}</td>`
+                // body += `<td>${val}</td>`
                 body += '\n'
             }
             body += '</tr>'
@@ -51,6 +65,11 @@ function excelToHtml() {
         html += `</body></html>`
         fs.writeFileSync('./index.html', html)
     })
+}
+
+function getColor(color) {
+    setColor = '#' + color.substring(2, color.length)
+    return setColor
 }
 
 setInterval(excelToHtml, 5000)
