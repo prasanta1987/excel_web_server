@@ -22,10 +22,10 @@ function excelToHtml() {
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
                         <title>Document</title>
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
                         <style>
                             table, tr, td {
                                 border: 1px solid black;
-                                min-width : 100px;
                                 text-align:center;
                             }
                         </style>
@@ -33,7 +33,7 @@ function excelToHtml() {
                     <body>
                 `
 
-        let body = '<table>'
+        let body = '<table class="table table-dark">'
         for (row = 1; row <= rowCount; row++) {
             body += '<tr>'
             for (col = 1; col <= colCount; col++) {
